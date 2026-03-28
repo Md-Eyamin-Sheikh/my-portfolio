@@ -1,3 +1,4 @@
+"use client";
 import "./styles/Career.css";
 
 const Career = () => {

@@ -1,4 +1,6 @@
-import { lazy, PropsWithChildren, Suspense, useEffect, useState } from "react";
+"use client";
+import { PropsWithChildren, Suspense, useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
@@ -9,8 +11,14 @@ import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import setSplitText from "./utils/splitText";
+import { setAllTimeline } from "./utils/GsapScroll";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
 
-const TechStack = lazy(() => import("./TechStack"));
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+const TechStack = dynamic(() => import("./TechStack"), { ssr: false });
 
 const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState<boolean>(false);
@@ -26,6 +34,11 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       window.removeEventListener("resize", resizeHandler);
     };
   }, [isDesktopView]);
+
+  // Initialize all GSAP scroll animations (career, work, etc.) after mount
+  useEffect(() => {
+    setAllTimeline();
+  }, []);
 
   return (
     <div className="container-main">
@@ -55,3 +68,4 @@ const MainContainer = ({ children }: PropsWithChildren) => {
 };
 
 export default MainContainer;
+

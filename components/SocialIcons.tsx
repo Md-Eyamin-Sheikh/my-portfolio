@@ -1,3 +1,4 @@
+"use client";
 import {
   FaGithub,
   FaInstagram,
@@ -67,6 +68,16 @@ const SocialIcons = () => {
         <span>
           <a href="https://www.linkedin.com/in/eyamin" target="_blank">
             <FaLinkedinIn />
+          </a>
+        </span>
+        <span>
+          <a href="https://x.com" target="_blank">
+            <FaXTwitter />
+          </a>
+        </span>
+        <span>
+          <a href="https://www.instagram.com" target="_blank">
+            <FaInstagram />
           </a>
         </span>
       </div>
