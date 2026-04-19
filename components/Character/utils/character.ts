@@ -39,6 +39,11 @@ const setCharacter = (
             resolve(gltf);
             setCharTimeline(character, camera);
             setAllTimeline();
+            setTimeout(() => {
+              import("gsap/ScrollTrigger").then(({ ScrollTrigger }) => {
+                ScrollTrigger.refresh();
+              });
+            }, 500);
             character!.getObjectByName("footR")!.position.y = 3.36;
             character!.getObjectByName("footL")!.position.y = 3.36;
             dracoLoader.dispose();

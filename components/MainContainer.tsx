@@ -11,7 +11,7 @@ import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
 import Work from "./Work";
 import setSplitText from "./utils/splitText";
-import { setAllTimeline } from "./utils/GsapScroll";
+// import { setAllTimeline } from "./utils/GsapScroll";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
@@ -35,9 +35,8 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     };
   }, [isDesktopView]);
 
-  // Initialize all GSAP scroll animations (career, work, etc.) after mount
   useEffect(() => {
-    setAllTimeline();
+    // Only register the timelines when necessary to avoid double triggers
   }, []);
 
   return (
